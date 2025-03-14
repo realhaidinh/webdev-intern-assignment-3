@@ -1,27 +1,37 @@
 <h2 class="text-3xl font-bold mb-6">User Registration</h2>
-<form class="bg-white p-6 rounded-lg shadow-md">
-    <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="registration-number">
-            Registration Number:
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="registration-number" type="text" placeholder="Enter registration number">
-    </div>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-        Submit
-    </button>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<form action="/" method="get">
+    <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="registration-number" name="registration_number" type="text" placeholder="Enter registration number">
+    <input type="submit" class="bg-black hover:cursor-pointer text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
 </form>
+</div>
 
 <h2 class="text-3xl font-bold mt-8 mb-6">Detailed Scores</h2>
 <div class="bg-white p-6 rounded-lg shadow-md">
     <p>Detailed view of search scores here!</p>
     <% if @student then %>
-    <table>
-        <thead>
-            <tr>Registration Number</tr>
-            
+    <table class="w-full table-auto">
+        <thead >
+            <tr class="text-left">
+                <th>Registration Number</th>
+                <% @student.subject_scores.each do |subject_scores| %>
+                <th class="text-center"><%= SubjectScore.format_name(subject_scores.subject_name) %></th>
+            <% end %>
+            <% if @student.foreign_lang_id then %>
+                <th class="text-center">Foreign language number</th>
+            <% end %>
+            </tr>
         </thead>
         <tbody>
-            <td><%= @student.id %></td>
+            <tr>
+                <td><%= @student.id %></td>
+                <% @student.subject_scores.each do |subject_scores| %>
+                    <td class="text-center"><%= subject_scores.score %></td>
+                <% end %>
+                <% if @student.foreign_lang_id then %>
+                    <td class="text-center"><%= @student.foreign_lang_id %></th>
+            <% end %>
+            </tr>
         </tbody>
     </table>
     <% end %>

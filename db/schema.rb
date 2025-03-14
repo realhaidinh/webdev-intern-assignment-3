@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_12_161138) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_14_100413) do
+  create_table "students", id: :string, force: :cascade do |t|
+    t.string "foreign_lang_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subject_scores", force: :cascade do |t|
-    t.string "student_id"
     t.string "subject_name"
     t.float "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "student_id", null: false
+    t.index ["student_id"], name: "index_subject_scores_on_student_id"
   end
+
+  add_foreign_key "subject_scores", "students"
 end

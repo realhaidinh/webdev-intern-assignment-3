@@ -1,1 +1,10 @@
-<h2>Reports</h2>
+<h2 class="text-3xl font-bold mb-6">Reports</h2>
+<ul>
+    <% SubjectScore.get_name_mapper().each do |org_name, formatted_name| %>
+    <li class="inline-block"><a href=<%= "/report?subject_name=#{org_name}" %>>
+        <%= formatted_name %>
+    </a></li>
+    <% end %>
+</ul>
+<%= SubjectScore.format_name(@subject_name) %>
+<%= pie_chart @subject_score_levels, name: SubjectScore.format_name(@subject_name)%>
