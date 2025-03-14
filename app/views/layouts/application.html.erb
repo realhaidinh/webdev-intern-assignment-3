@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= content_for(:title) || "Assignment 3" %></title>
+    <title>G-Scores</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,6 +23,32 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="bg-blue-900">
+      <h1 class="text-2xl font-bold text-white text-center py-4">G-Scores</h1>
+    </header>
+    <div class="flex">
+        <div class="bg-blue-600 w-64 min-h-screen p-4">
+            <ul>
+              <li class="mb-4">
+                <a 
+                  href="/"
+                  data-selected="<%= @current_route == "search" %>" 
+                  class="hover:font-bold data-[selected=true]:font-bold">
+                  Search Scores
+                </a>
+              </li>
+              <li class="mb-4">
+                <a 
+                  href="/report" 
+                  data-selected="<%=  @current_route == "report" %>" 
+                  class="hover:font-bold data-[selected=true]:font-bold">
+                  Reports
+                </a>
+              </li>
+            </ul>
+        </div>
+    <div class="flex-1 p-8">
+      <%= yield %>
+    </div>
   </body>
 </html>
