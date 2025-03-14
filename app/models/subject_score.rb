@@ -1,0 +1,2 @@
+class SubjectScore < ApplicationRecord
+end
