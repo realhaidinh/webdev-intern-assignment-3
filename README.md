@@ -4,6 +4,7 @@
 1. Install Ruby and Rails
 2. Run database migration
 ```sh
+rails db:migrate
 rails db:seed
 ```
 3. Run server
