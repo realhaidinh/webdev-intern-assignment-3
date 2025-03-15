@@ -25,9 +25,8 @@ class GScoresController < ApplicationController
   end
   def top_ten
     @current_route = "top_ten"
-    @top_ten = Student
-    .joins(:subject_scores)
-    .select("'students'.'id', avg(score) as avg_score")
+    @top_ten = SubjectScore
+    .select("student_id, avg(score) as avg_score")
     .where("subject_name in (?)", [ "toan", "vat_li", "hoa_hoc" ])
     .group(:student_id)
     .order("avg_score" => :desc)

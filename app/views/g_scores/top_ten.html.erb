@@ -9,7 +9,7 @@
     <tbody>
         <% @top_ten.each do |student| %>
         <tr>
-            <td><%= student.id %></td>
+            <td><%= student.student_id %></td>
             <td><%= student.avg_score.round(2) %></td>
         </tr>
         <% end %>
