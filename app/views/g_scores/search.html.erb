@@ -12,8 +12,8 @@
     <% if @student then %>
     <table class="w-full table-auto">
         <thead >
-            <tr class="text-left">
-                <th>Registration Number</th>
+            <tr>
+                <th class="text-left">Registration Number</th>
                 <% @student.subject_scores.each do |subject_scores| %>
                 <th class="text-center"><%= SubjectScore.format_name(subject_scores.subject_name) %></th>
             <% end %>

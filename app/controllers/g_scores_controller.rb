@@ -16,5 +16,22 @@ class GScoresController < ApplicationController
       WHEN score < 6 AND score >= 4 THEN '6 points > && >=4 points'
       WHEN score < 4 THEN '<4 points' END")
     .count
+    @subject_score_levels = {
+      "<4 points" => @subject_score_levels["<4 points"],
+      "6 points > && >=4 points" => @subject_score_levels["6 points > && >=4 points"],
+      "8 points > && >=6 points" => @subject_score_levels["8 points > && >=6 points"],
+      ">=8 points" => @subject_score_levels[">=8 points"]
+    }
+  end
+  def top_ten
+    @current_route = "top_ten"
+    @top_ten = Student
+    .joins(:subject_scores)
+    .select("'students'.'id', avg(score) as avg_score")
+    .where("subject_name in (?)", [ "toan", "vat_li", "hoa_hoc" ])
+    .group(:student_id)
+    .order("avg_score" => :desc)
+    .limit(10)
+    .load
   end
 end

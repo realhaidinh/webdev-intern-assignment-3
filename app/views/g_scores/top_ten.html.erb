@@ -1,0 +1,17 @@
+<h2 class="text-3xl font-bold mb-6">Top 10 students of group A including (math, physics, chemistry)</h2>
+<table class="w-1/2">
+    <thead>
+        <tr class="text-left">
+            <th>Registration number</th>
+            <th>Average score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @top_ten.each do |student| %>
+        <tr>
+            <td><%= student.id %></td>
+            <td><%= student.avg_score.round(2) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

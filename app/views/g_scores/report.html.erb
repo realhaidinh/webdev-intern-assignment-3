@@ -1,10 +1,14 @@
 <h2 class="text-3xl font-bold mb-6">Reports</h2>
-<ul>
+<ul class="flex justify-between mb-4">
     <% SubjectScore.get_name_mapper().each do |org_name, formatted_name| %>
-    <li class="inline-block"><a href=<%= "/report?subject_name=#{org_name}" %>>
-        <%= formatted_name %>
-    </a></li>
+    <li class="inline-block">
+        <a
+        data-turbo-prefetch="false" 
+        class="<%= "rounded-sm p-2 text-white hover:cursor-pointer #{org_name == @subject_name ? "bg-blue-600" : "bg-blue-400"}" %>"
+        href="<%="/report?subject_name=#{org_name}" %>">
+            <%= formatted_name %> 
+        </a>
+    </li>
     <% end %>
 </ul>
-<%= SubjectScore.format_name(@subject_name) %>
-<%= pie_chart @subject_score_levels, name: SubjectScore.format_name(@subject_name)%>
+<%= column_chart @subject_score_levels, name: SubjectScore.format_name(@subject_name)%>

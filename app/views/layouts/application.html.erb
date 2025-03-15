@@ -32,6 +32,7 @@
               <li class="mb-4">
                 <a 
                   href="/"
+                  data-turbo-prefetch="false"
                   data-selected="<%= @current_route == "search" %>" 
                   class="hover:font-bold data-[selected=true]:font-bold">
                   Search Scores
@@ -40,9 +41,19 @@
               <li class="mb-4">
                 <a 
                   href="/report" 
+                  data-turbo-prefetch="false"
                   data-selected="<%=  @current_route == "report" %>" 
                   class="hover:font-bold data-[selected=true]:font-bold">
                   Reports
+                </a>
+              </li>
+              <li class="mb-4">
+                <a 
+                  href="/top_ten" 
+                  data-turbo-prefetch="false"
+                  data-selected="<%=  @current_route == "top_ten" %>" 
+                  class="hover:font-bold data-[selected=true]:font-bold">
+                  Top 10 students of group A
                 </a>
               </li>
             </ul>
