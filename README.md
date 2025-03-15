@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Getting started
+1. Install Ruby and Rails
+2. Run database migration
+```sh
+rails db:seed
+```
+3. Run server
+```sh
+rails server
+```
+4. Go to **http://localhost:3000**
