@@ -27,8 +27,9 @@ class GScoresController < ApplicationController
     @current_route = "top_ten"
     @top_ten = SubjectScore
     .select("student_id, avg(score) as avg_score")
-    .where("subject_name in (?)", [ "toan", "vat_li", "hoa_hoc" ])
+    .where(subject_name: [ "toan", "vat_li", "hoa_hoc" ])
     .group(:student_id)
+    .having("count(subject_id) = 3")
     .order("avg_score" => :desc)
     .limit(10)
     .load
